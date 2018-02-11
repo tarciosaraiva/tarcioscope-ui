@@ -1,0 +1,18 @@
+{
+  "name": "tarcioscope-ui",
+  "version": "1.0.0",
+  "description": "UI for tarcioscope",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Tarcio Saraiva <tarcio@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "parcel-bundler": "^1.5.1"
+  },
+  "dependencies": {
+    "vue": "^2.5.13"
+  }
+}
