@@ -4,6 +4,15 @@
 
 <script>
 export default {
-  name: 'credits'
+  name: 'app-footer'
 }
 </script>
+
+<style lang="postcss" scoped>
+footer {
+  background-color: lavender;
+  font-family: monospace;
+  padding: 10px 0;
+  text-align: center;
+}
+</style>

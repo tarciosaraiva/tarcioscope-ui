@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="../../img/telescope.svg" alt="tarcioscope" />
+    <img height="30px" src="../../img/telescope.svg" alt="tarcioscope" />
     <h1>tarcioscope</h1>
   </header>
 </template>
@@ -11,18 +11,25 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 header {
+  align-items: center;
+  background-color: lavender;
   display: flex;
-  justify-content: space-around;
-  height: 60px;
+  flex-direction: row;
+  padding: 10px 0;
 }
 
 header img {
-  flex: 0.1;
+  padding: 0 0 0 20px;
 }
 
 header h1 {
   flex: 1;
+  font-family: monospace;
+  font-size: 2.5em;
+  margin: 0;
+  padding: 0 20px 0 0;
+  text-align: right;
 }
 </style>

@@ -10,9 +10,12 @@
   "author": "Tarcio Saraiva <tarcio@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^8.0.0",
     "babel-preset-env": "^1.6.1",
     "parcel-bundler": "^1.5.1",
     "parcel-plugin-vue": "^1.5.0",
+    "postcss-modules": "^1.1.0",
+    "postcss-nested": "^3.0.0",
     "standard": "^10.0.3",
     "vue-template-compiler": "^2.5.13"
   },
