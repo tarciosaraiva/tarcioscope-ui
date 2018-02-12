@@ -4,15 +4,20 @@
   "description": "UI for tarcioscope",
   "main": "index.js",
   "scripts": {
+    "start": "parcel ./src/index.html",
     "test": "jest"
   },
   "author": "Tarcio Saraiva <tarcio@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
-    "parcel-bundler": "^1.5.1"
+    "parcel-bundler": "^1.5.1",
+    "parcel-plugin-vue": "^1.5.0",
+    "standard": "^10.0.3",
+    "vue-template-compiler": "^2.5.13"
   },
   "dependencies": {
+    "normalize.css": "^8.0.0",
     "vue": "^2.5.13"
   }
 }
