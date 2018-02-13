@@ -1,4 +1,5 @@
 <template>
+  <canvas id="camerafeed"></canvas>
 </template>
 
 <script>

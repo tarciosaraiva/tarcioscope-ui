@@ -7,32 +7,14 @@
 </template>
 
 <script>
-import AppHeader from './AppHeader.vue'
-import AppFooter from './AppFooter.vue'
+import AppHeader from './AppHeader'
+import AppFooter from './AppFooter'
 import CameraWrapper from './CameraWrapper'
+
+import './App.css'
 
 export default {
   name: 'app',
   components: { AppHeader, AppFooter, CameraWrapper }
 }
 </script>
-
-<style lang="postcss" scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    margin: 0 auto;
-    max-width: 768px;
-  }
-}
-
-.container .camera-wrapper {
-  flex: 1;
-}
-</style>

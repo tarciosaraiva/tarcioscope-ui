@@ -1,10 +1,17 @@
 <template>
-  <div class="wrapper"></div>
+  <div class="wrapper">
+    <camera></camera>
+    <controls></controls>
+  </div>
 </template>
 
 <script>
+import Camera from './Camera.vue'
+import Controls from './Controls.vue'
+
 export default {
-  name: 'camera-wrapper'
+  name: 'camera-wrapper',
+  components: { Camera, Controls }
 }
 </script>
 

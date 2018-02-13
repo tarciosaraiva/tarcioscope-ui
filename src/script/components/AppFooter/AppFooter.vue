@@ -8,11 +8,11 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 footer {
   background-color: lavender;
   font-family: monospace;
-  padding: 10px 0;
+  padding: 10px 20px;
   text-align: center;
 }
 </style>

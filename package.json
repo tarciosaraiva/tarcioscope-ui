@@ -4,7 +4,7 @@
   "description": "UI for tarcioscope",
   "main": "index.js",
   "scripts": {
-    "start": "parcel ./src/index.html",
+    "start": "parcel ./src/index.html --no-cache",
     "test": "jest"
   },
   "author": "Tarcio Saraiva <tarcio@gmail.com>",
@@ -14,7 +14,6 @@
     "babel-preset-env": "^1.6.1",
     "parcel-bundler": "^1.5.1",
     "parcel-plugin-vue": "^1.5.0",
-    "postcss-modules": "^1.1.0",
     "postcss-nested": "^3.0.0",
     "standard": "^10.0.3",
     "vue-template-compiler": "^2.5.13"

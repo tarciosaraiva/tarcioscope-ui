@@ -9,6 +9,6 @@
       ],
       "flexbox": "no-2009"
     },
-    "postcss-nested": {}
+    "postcss-nested": true
   }
 }
