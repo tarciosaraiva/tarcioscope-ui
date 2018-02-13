@@ -19,6 +19,8 @@
     "vue-template-compiler": "^2.5.13"
   },
   "dependencies": {
+    "jsmpeg": "^1.0.0",
+    "lodash.throttle": "^4.1.1",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.13"
   }

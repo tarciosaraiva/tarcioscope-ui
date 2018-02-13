@@ -1,4 +1,5 @@
 <template>
+  <button>Snap!</button>
 </template>
 
 <script>

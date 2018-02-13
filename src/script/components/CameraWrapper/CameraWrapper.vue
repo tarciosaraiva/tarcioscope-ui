@@ -18,5 +18,7 @@ export default {
 <style lang="postcss" scoped>
 .wrapper {
   background-color: whitesmoke;
+  padding: 20px;
+  text-align: center;
 }
 </style>
