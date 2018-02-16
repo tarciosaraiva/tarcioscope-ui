@@ -3,9 +3,9 @@ import 'normalize.css'
 
 import App from './components/App.vue'
 
-new Vue({
+new Vue({ // eslint-disable-line
   el: '#app',
-  render: h => h(App),
+  render: h => h(App)
 })
 
 if (module.hot) {
