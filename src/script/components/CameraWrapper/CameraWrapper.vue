@@ -7,7 +7,7 @@
 
 <script>
 import Camera from './Camera.vue'
-import Controls from './Controls.vue'
+import Controls from './Controls'
 
 export default {
   name: 'camera-wrapper',
@@ -17,8 +17,7 @@ export default {
 
 <style lang="postcss" scoped>
 .wrapper {
-  background-color: whitesmoke;
-  padding: 20px;
+  padding: 10px 10px 0;
   text-align: center;
 }
 </style>
