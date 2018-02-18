@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       player: null,
-      ws: new WebSocket('ws://gopdopspi:8084/'),
+      ws: new WebSocket('ws://gopdopspi:9000/ws'),
     }
   },
   methods: {
