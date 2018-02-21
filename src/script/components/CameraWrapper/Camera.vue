@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       player: null,
-      ws: new WebSocket('ws://gopdopspi:9000/ws'),
+      ws: new WebSocket(process.env.CAMERA_STREAM_WS),
     }
   },
   methods: {
