@@ -4,6 +4,7 @@
   "description": "UI for tarcioscope",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "parcel build ./src/index.html --no-cache",
     "start": "CAMERA_STREAM_WS=ws://gopdopspi:9000 parcel ./src/index.html --no-cache",
     "ci": "npm run lint && npm t",
@@ -22,6 +23,7 @@
     "parcel-plugin-vue": "^1.5.0",
     "postcss-nested": "^3.0.0",
     "postcss-simple-vars": "^4.1.0",
+    "rimraf": "^2.6.2",
     "standard": "^10.0.3",
     "vue-jest": "^2.1.0",
     "vue-template-compiler": "^2.5.13"
