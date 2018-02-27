@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "parcel build ./src/index.html --no-cache",
-    "start": "CAMERA_STREAM_WS=ws://gopdopspi:9000 parcel ./src/index.html --no-cache",
+    "build": "CAMERA_STREAM_WS=ws://gopdopspi:8000 parcel build ./src/index.html --public-url ./ --no-cache",
+    "start": "CAMERA_STREAM_WS=ws://gopdopspi:8000 parcel ./src/index.html --no-cache",
     "ci": "npm run lint && npm t",
     "lint": "standard ./src",
     "test": "jest"
