@@ -37,6 +37,7 @@ export default {
     this.setupPlayer()
   },
   beforeDestroy() {
+    this.player.stop()
     this.player = null
   }
 }
