@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       player: null,
-      ws: new WebSocket(process.env.CAMERA_STREAM_WS),
+      ws: new WebSocket(`ws://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}/ws`)
     }
   },
   methods: {
@@ -30,15 +30,20 @@ export default {
     },
     setupPlayer () {
       this.player = new jsmpeg(this.ws, { canvas: this.$refs.camerafeed, audio: false })
+    },
+    unloadPageHandler () {
+      this.player.stop()
     }
+  },
+  created () {
+    window.addEventListener('beforeunload', this.unloadPageHandler)
   },
   mounted () {
     this.setupCanvas()
     this.setupPlayer()
   },
-  beforeDestroy() {
-    this.player.stop()
-    this.player = null
+  beforeDestroy () {
+    this.unloadPageHandler()
   }
 }
 </script>

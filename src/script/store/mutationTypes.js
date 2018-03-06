@@ -1,0 +1,4 @@
+export const PHOTO = 'PHOTO'
+export const CHANGE_ISO = 'CHANGE_ISO'
+export const CHANGE_METER_MODE = 'CHANGE_METER_MODE'
+export const CHANGE_EXPOSURE_MODE = 'CHANGE_EXPOSURE_MODE'

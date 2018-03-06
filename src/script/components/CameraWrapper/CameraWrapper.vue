@@ -1,17 +1,33 @@
 <template>
   <div class="wrapper">
-    <camera></camera>
-    <controls></controls>
+    <camera />
+    <controls
+      :iso="settings.iso"
+      :meter-mode="settings.meterMode"
+      :exposure-mode="settings.exposureMode" />
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 import Camera from './Camera.vue'
 import Controls from './Controls'
 
 export default {
   name: 'camera-wrapper',
-  components: { Camera, Controls }
+  components: { Camera, Controls },
+  computed: {
+    ...mapState({
+      settings: state => state.settings
+    })
+  },
+  methods: {
+    ...mapActions(['loadCameraSettings'])
+  },
+  created () {
+    this.loadCameraSettings()
+  }
 }
 </script>
 

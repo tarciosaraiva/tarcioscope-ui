@@ -3,7 +3,7 @@
     <div class="camera-options-wrapper">
       <div class="camera-option-control">
         <label for="meter_mode">Metering</label>
-        <select name="meter_mode" id="meterMode" v-model="meterMode">
+        <select name="meter_mode" id="meterMode" @change="changeHandler" v-bind:value="meterMode">
           <option value="average">Average</option>
           <option value="spot">Spot</option>
           <option value="backlit">Backlit</option>
@@ -12,7 +12,7 @@
       </div>
       <div class="camera-option-control">
         <label for="iso">ISO</label>
-        <select name="iso" id="iso" v-model="iso">
+        <select name="iso" id="iso" @change="changeHandler" v-bind:value="iso">
           <option value="100">100</option>
           <option value="200">200</option>
           <option value="320">320</option>
@@ -24,7 +24,7 @@
       </div>
       <div class="camera-option-control">
         <label for="exposure_mode">Exposure</label>
-        <select name="exposure_mode" id="exposureMode" v-model="exposureMode">
+        <select name="exposure_mode" @change="changeHandler" id="exposureMode" v-bind:value="exposureMode">
           <option value="off">off</option>
           <option value="auto">Auto</option>
           <option value="night">Night</option>
@@ -41,7 +41,7 @@
         </select>
       </div>
     </div>
-    <button class="camera-button">
+    <button class="camera-button" @click="snapHandler">
       <span class="button-label">Take a snap</span>
       <span class="button-icon">
         <font-awesome-icon :icon="icon" size="2x" />
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import { faCamera } from '@fortawesome/fontawesome-free-solid'
 
@@ -58,17 +59,25 @@ import './Controls.css'
 
 export default {
   name: 'controls',
-  components: { FontAwesomeIcon },
-  data () {
-    return {
-      meterMode: 'spot',
-      iso: 200,
-      exposureMode: 'antishake'
-    }
+  props: {
+    iso: [String, Number],
+    meterMode: String,
+    exposureMode: String,
   },
+  components: { FontAwesomeIcon },
   computed: {
-    icon () {
-      return faCamera
+    icon: () => faCamera
+  },
+  methods: {
+    ...mapActions(['changeCameraSettings', 'snap']),
+    changeHandler (e) {
+      const { name, value } = e.target
+      let payload = {}
+      payload[name] = value
+      this.changeCameraSettings(payload)
+    },
+    snapHandler () {
+      this.snap()
     }
   }
 }
