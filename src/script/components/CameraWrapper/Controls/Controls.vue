@@ -20,6 +20,7 @@
           <option value="500">500</option>
           <option value="640">640</option>
           <option value="800">800</option>
+          <option value="1600">1600</option>
         </select>
       </div>
       <div class="camera-option-control">
@@ -41,10 +42,11 @@
         </select>
       </div>
     </div>
-    <button class="camera-button" @click="snapHandler">
+    <button class="camera-button" @click="snapHandler" :disabled="loading">
       <span class="button-label">Take a snap</span>
       <span class="button-icon">
-        <font-awesome-icon :icon="icon" size="2x" />
+        <font-awesome-icon :icon="loadingIcon" size="2x" spin v-if="loading" />
+        <font-awesome-icon :icon="icon" size="2x" v-else />
       </span>
     </button>
   </div>
@@ -53,7 +55,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import { faCamera } from '@fortawesome/fontawesome-free-solid'
+import { faCamera, faCog } from '@fortawesome/fontawesome-free-solid'
 
 import './Controls.css'
 
@@ -66,7 +68,11 @@ export default {
   },
   components: { FontAwesomeIcon },
   computed: {
-    icon: () => faCamera
+    ...mapState({
+      loading: state => state.loading
+    }),
+    icon: () => faCamera,
+    loadingIcon: () => faCog,
   },
   methods: {
     ...mapActions(['changeCameraSettings', 'snap']),

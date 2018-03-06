@@ -1,10 +1,13 @@
 import Vue from 'vue'
+import VueProgressbar from 'vue-progressbar'
 import 'normalize.css'
 
 import store from './store'
 import App from './components/App.vue'
 
-new Vue({ // eslint-disable-line
+Vue.use(VueProgressbar, { color: '#ffb347' })
+
+export default new Vue({ // eslint-disable-line
   el: '#app',
   store,
   render: h => h(App)

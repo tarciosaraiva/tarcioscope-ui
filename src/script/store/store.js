@@ -15,6 +15,9 @@ const store = new Vuex.Store({
       exposureMode: 'antishake',
     },
     photos: [],
+    loading: false,
+    error: false,
+    snapping: false
   },
   actions,
   mutations

@@ -38,6 +38,7 @@
     "lodash.throttle": "^4.1.1",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.13",
+    "vue-progressbar": "^0.7.3",
     "vuex": "^3.0.1"
   }
 }

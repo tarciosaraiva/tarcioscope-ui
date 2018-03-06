@@ -11,10 +11,28 @@ const mutations = {
   [types.CHANGE_EXPOSURE_MODE] (state, exposureMode) {
     Vue.set(state.settings, 'exposureMode', exposureMode)
   },
-  [types.PHOTO] (state, photoBlob) {
+  [types.PHOTO] (state, photoUrl) {
     const snaps = state.photos
-    snaps.push({ photoUrl: URL.createObjectURL(photoBlob), content: photoBlob })
+    snaps.push({ photoUrl })
     Vue.set(state, 'photos', snaps)
+  },
+  [types.REQUEST_PENDING] (state) {
+    Vue.set(state, 'loading', true)
+    Vue.set(state, 'error', false)
+  },
+  [types.REQUEST_FAILED] (state) {
+    Vue.set(state, 'loading', false)
+    Vue.set(state, 'error', true)
+  },
+  [types.REQUEST_SUCCESSFUL] (state) {
+    Vue.set(state, 'loading', false)
+    Vue.set(state, 'error', false)
+  },
+  [types.START_SNAP] (state) {
+    Vue.set(state, 'snapping', true)
+  },
+  [types.END_SNAP] (state) {
+    Vue.set(state, 'snapping', false)
   }
 }
 

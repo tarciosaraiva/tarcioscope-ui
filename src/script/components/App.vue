@@ -1,5 +1,6 @@
 <template>
   <main role="main" class="container">
+    <vue-progress-bar></vue-progress-bar>
     <app-header></app-header>
     <camera-wrapper class="camera-wrapper"></camera-wrapper>
     <app-footer></app-footer>

@@ -5,6 +5,9 @@
       :iso="settings.iso"
       :meter-mode="settings.meterMode"
       :exposure-mode="settings.exposureMode" />
+    <div v-for="photo in photos">
+      <img :src="photo.photoUrl" width="340" />
+    </div>
   </div>
 </template>
 
@@ -19,7 +22,8 @@ export default {
   components: { Camera, Controls },
   computed: {
     ...mapState({
-      settings: state => state.settings
+      settings: state => state.settings,
+      photos: state => state.photos
     })
   },
   methods: {

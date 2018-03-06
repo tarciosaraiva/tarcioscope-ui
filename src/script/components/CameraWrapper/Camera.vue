@@ -11,15 +11,17 @@
 
 <script>
 import jsmpeg from 'jsmpeg'
-import throttle from 'lodash.throttle'
+import { mapState } from 'vuex'
 
 export default {
   name: 'camera',
   data () {
     return {
-      player: null,
-      ws: new WebSocket(`ws://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}/ws`)
+      player: null
     }
+  },
+  computed: {
+    ...mapState(['snapping'])
   },
   methods: {
     setupCanvas () {
@@ -29,21 +31,31 @@ export default {
       ctx.fillText('Loading...', cameraFeedCanvas.width/2-30, cameraFeedCanvas.height/3)
     },
     setupPlayer () {
-      this.player = new jsmpeg(this.ws, { canvas: this.$refs.camerafeed, audio: false })
+      const ws = new WebSocket(`ws://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}/ws`)
+      this.player = new jsmpeg(ws, { canvas: this.$refs.camerafeed, audio: false })
     },
-    unloadPageHandler () {
+    stopPlayer () {
       this.player.stop()
     }
   },
+  watch: {
+    snapping: function (oldVal, newVal) {
+      if (!oldVal && newVal) {
+        this.setupPlayer()
+      } else {
+        this.stopPlayer()
+      }
+    }
+  },
   created () {
-    window.addEventListener('beforeunload', this.unloadPageHandler)
+    window.addEventListener('beforeunload', this.stopPlayer)
   },
   mounted () {
     this.setupCanvas()
     this.setupPlayer()
   },
   beforeDestroy () {
-    this.unloadPageHandler()
+    this.stopPlayer()
   }
 }
 </script>

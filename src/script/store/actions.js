@@ -18,9 +18,11 @@ const actions = {
       })
   },
   snap({ commit, state }) {
+    commit(types.START_SNAP)
     api.snap()
       .then(({ data }) => {
-        commit(types.PHOTO, new Blob([data],{ type: 'image/png' }))
+        commit(types.PHOTO, URL.createObjectURL(data))
+        commit(types.END_SNAP)
       })
   }
 }
