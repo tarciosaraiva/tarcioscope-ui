@@ -4,37 +4,37 @@ import app from './main'
 import store from './store'
 import * as types from './store/mutationTypes'
 
+const headers = { 'Content-Type': 'application/json' }
+
 const instance = axios.create({
-  baseURL: `http://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}/`,
+  baseURL: `http://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}`,
   timeout: 15000,
-});
+})
+
+const errorFn = (error) => {
+  app.$Progress.fail()
+  store.commit(types.REQUEST_FAILED)
+  return Promise.reject(error)
+}
 
 instance.interceptors.request.use(config => {
   app.$Progress.start()
   store.commit(types.REQUEST_PENDING)
   return config
-}, error => {
-  app.$Progress.fail()
-  store.commit(types.REQUEST_FAILED)
-  return Promise.reject(error)
-});
+}, errorFn)
 
 instance.interceptors.response.use(response => {
   app.$Progress.finish()
   store.commit(types.REQUEST_SUCCESSFUL)
   return response
-}, error => {
-  app.$Progress.fail()
-  store.commit(types.REQUEST_FAILED)
-  return Promise.reject(error)
-});
+}, errorFn)
 
 export const getSettings = () => {
-  return instance.get('/', { headers: { 'Content-Type': 'application/json' } })
+  return instance.get('/config', { headers })
 }
 
 export const applySettings = (cameraSettings) => {
-  return instance.post('/', cameraSettings, { headers: { 'Content-Type': 'application/json' } })
+  return instance.post('/config', cameraSettings, { headers })
 }
 
 export const snap = () => {

@@ -1,5 +1,5 @@
 <template>
-  <canvas id="camerafeed" width="320" height="240" ref="camerafeed">
+  <canvas id="camerafeed" width="640" height="480" ref="camerafeed">
     <p>
       Please use a browser that supports the Canvas Element, like
       <a href="http://www.google.com/chrome">Chrome</a>,
@@ -36,15 +36,6 @@ export default {
     },
     stopPlayer () {
       this.player.stop()
-    }
-  },
-  watch: {
-    snapping: function (oldVal, newVal) {
-      if (!oldVal && newVal) {
-        this.setupPlayer()
-      } else {
-        this.stopPlayer()
-      }
     }
   },
   created () {

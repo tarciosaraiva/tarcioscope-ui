@@ -5,7 +5,9 @@ import 'normalize.css'
 import store from './store'
 import App from './components/App.vue'
 
-Vue.use(VueProgressbar, { color: '#ffb347' })
+import colors from './colors'
+
+Vue.use(VueProgressbar, { color: colors.backgroundControl })
 
 export default new Vue({ // eslint-disable-line
   el: '#app',
