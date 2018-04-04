@@ -7,6 +7,7 @@ header {
 
   img {
     padding: 0 0 0 20px;
+    transition: all .3s;
   }
 
   h1 {
@@ -16,5 +17,12 @@ header {
     margin: 0;
     padding: 0 20px 0 0;
     text-align: right;
+    transition: all .3s;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 4em;
+    }
   }
 }
