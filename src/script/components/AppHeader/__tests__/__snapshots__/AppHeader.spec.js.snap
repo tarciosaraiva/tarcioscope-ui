@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppHeader /> created behaviour matches snapshot 1`] = `
+<header class="app-header">
+  <img height="30" src="../../../img/telescope.svg" alt="tarcioscope">
+  <h1>tarcioscope</h1>
+</header>
+`;

@@ -57,8 +57,6 @@ import { mapState, mapActions } from 'vuex'
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
 import { faCamera, faCog } from '@fortawesome/fontawesome-free-solid'
 
-import './Controls.css'
-
 export default {
   name: 'controls',
   props: {
@@ -88,3 +86,99 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss" scoped>
+
+.controls-wrapper {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  max-width: 522px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.camera-options-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.camera-button {
+  align-items: center;
+  background: #ffb347;
+  border: 0;
+  border-bottom: 2px solid #e5a13f;
+  border-radius: 3px;
+  box-shadow: inset 0 -2px #e5a13f;
+
+  cursor: pointer;
+  display: flex;
+  font-size: 1.2em;
+  margin: 10px 0;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.camera-button:active, .camera-button:hover {
+  background: #ffd394;
+  border-bottom-color: #eec282;
+  box-shadow: inset 0 -2px #eec282;
+}
+
+.camera-button:active .button-icon,
+.camera-button:hover .button-icon {
+  background-color: #eec282;
+}
+
+.camera-button:active .button-label,
+.camera-button:active .button-icon {
+  color: #45250a;
+}
+
+.camera-button span {
+  padding: 10px 20px;
+}
+
+.camera-button .button-label {
+  flex: 1;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.camera-button .button-icon {
+  background-color: #e5a13f;
+  text-align: right;
+}
+
+.camera-option-control {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+.camera-option-control:last-child {
+  padding-right: 0;
+}
+
+.camera-option-control label {
+
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.camera-option-control select {
+  -webkit-appearance: none;
+  background: #ffb347;
+  border: 0;
+  border-bottom: 2px solid #e5a13f;
+  border-radius: 3px;
+  box-shadow: inset 0 -2px #e5a13f;
+
+  font-size: 1.2em;
+  padding: 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+</style>
