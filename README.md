@@ -18,3 +18,11 @@ What you will need
 
 Getting started
 ---
+
+Clone this repo, change to its directory and run `yarn`.
+
+To run the tests and linting you can run `yarn test`.
+
+To execute the app you will run `yarn start`.
+
+In order to have it fully working reading images from a stream you are going to have to have a server streaming images. Currently that's the backend part of this project named [tarcioscope](https://github.com/tarciosaraiva/tarcioscope). But you could point to any server that streams images and be done with it.
