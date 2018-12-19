@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 import App from '../App.vue'
 import AppHeader from '../AppHeader'
@@ -9,7 +9,7 @@ describe('<App />', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallow(App, {
+    wrapper = shallowMount(App, {
       stubs: { 'vue-progress-bar': true }
     })
   })

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 import AppHeader from '../AppHeader.vue'
 
@@ -8,7 +8,7 @@ describe('<AppHeader />', () => {
   describe('created behaviour', () => {
     beforeEach(() => {
       jest.spyOn(AppHeader.methods, 'defineLogoHeight').mockImplementation(() => {})
-      wrapper = shallow(AppHeader)
+      wrapper = shallowMount(AppHeader)
     })
 
     afterEach(() => {
@@ -34,7 +34,7 @@ describe('<AppHeader />', () => {
 
   describe('#defineLogoHeight', () => {
     beforeEach(() => {
-      wrapper = shallow(AppHeader)
+      wrapper = shallowMount(AppHeader)
     })
 
     afterEach(() => {

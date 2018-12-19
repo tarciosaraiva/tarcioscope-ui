@@ -2,9 +2,9 @@
 
 exports[`<App /> matches snapshot 1`] = `
 <main role="main" class="container">
-  <!---->
-  <!---->
-  <!---->
-  <!---->
+  <vue-progress-bar-stub></vue-progress-bar-stub>
+  <app-header-stub></app-header-stub>
+  <camera-wrapper-stub class="camera-wrapper"></camera-wrapper-stub>
+  <app-footer-stub></app-footer-stub>
 </main>
 `;

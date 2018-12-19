@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <img src="/api/stream.mjpg" width="640" height="480" ref="camerafeed" />
+    <img src="http://localhost/api/stream.mjpg" width="640" height="480" ref="camerafeed" />
     <controls
       :iso="settings.iso"
       :meter-mode="settings.meterMode"

@@ -1,4 +1,4 @@
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 import AppFooter from '../AppFooter.vue'
 
@@ -6,7 +6,7 @@ describe('<AppFooter />', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = shallow(AppFooter)
+    wrapper = shallowMount(AppFooter)
   })
 
   it('renders a footer block', () => {
