@@ -42,31 +42,29 @@ export default {
 
 <style lang="postcss" scoped>
 .app-header {
-  align-items: center;
-  color: #f5f5f5;
+  align-content: center;
   display: flex;
   flex-direction: row;
-  padding: 10px 0;
+  padding: 1rem;
+  width: 48rem;
+  margin: 0 auto;
 }
 
 .app-header img {
-  padding: 0 0 0 20px;
+  min-height: 100%;
   transition: all .3s;
 }
 
 .app-header h1 {
-  flex: 1;
-  font-family: monospace;
-  font-size: 2.5em;
+  flex: auto;
   margin: 0;
-  padding: 0 20px 0 0;
   text-align: right;
   transition: all .3s;
 }
 
 @media (min-width: 768px) {
   .app-header h1 {
-    font-size: 4em;
+    font-size: 3em;
   }
 }
 </style>

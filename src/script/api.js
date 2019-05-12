@@ -7,7 +7,7 @@ import * as types from './store/mutationTypes'
 const headers = { 'Content-Type': 'application/json' }
 
 export const instance = axios.create({
-  baseURL: `http://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}/api`,
+  baseURL: `http://${process.env.CAMERA_SERVER_HOST}:${process.env.CAMERA_SERVER_PORT}`,
   timeout: 1000
 })
 
@@ -38,5 +38,5 @@ export const applySettings = (cameraSettings) => {
 }
 
 export const snap = () => {
-  return instance.get('/snap', { responseType: 'blob', timeout: 15000 })
+  return instance.get('/api/snap', { responseType: 'blob', timeout: 15000 })
 }

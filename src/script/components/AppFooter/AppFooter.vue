@@ -10,14 +10,14 @@ export default {
 
 <style scoped>
 footer {
-  background-color: #666666;
   font-family: monospace;
-  padding: 10px;
+  margin: 0 auto;
+  max-width: 48rem;
+  padding: 1rem;
   text-align: center;
 }
 
 footer a {
-  color: #999999;
   text-decoration: none;
 }
 </style>

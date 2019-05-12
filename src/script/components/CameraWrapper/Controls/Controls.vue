@@ -1,7 +1,7 @@
 <template>
   <div class="controls-wrapper">
     <div class="camera-options-wrapper">
-      <div class="camera-option-control">
+      <div class="camera-option-control select">
         <label for="meter_mode">Metering</label>
         <select name="meter_mode" id="meterMode" @change="changeHandler" v-bind:value="meterMode">
           <option value="average">Average</option>
@@ -10,20 +10,7 @@
           <option value="matrix">Matrix</option>
         </select>
       </div>
-      <div class="camera-option-control">
-        <label for="iso">ISO</label>
-        <select name="iso" id="iso" @change="changeHandler" v-bind:value="iso">
-          <option value="100">100</option>
-          <option value="200">200</option>
-          <option value="320">320</option>
-          <option value="400">400</option>
-          <option value="500">500</option>
-          <option value="640">640</option>
-          <option value="800">800</option>
-          <option value="1600">1600</option>
-        </select>
-      </div>
-      <div class="camera-option-control">
+      <div class="camera-option-control select">
         <label for="exposure_mode">Exposure</label>
         <select name="exposure_mode" @change="changeHandler" id="exposureMode" v-bind:value="exposureMode">
           <option value="off">off</option>
@@ -42,20 +29,34 @@
         </select>
       </div>
     </div>
-    <button class="camera-button" @click="snapHandler" :disabled="loading">
-      <span class="button-label">Take a snap</span>
-      <span class="button-icon">
-        <font-awesome-icon :icon="loadingIcon" size="2x" spin v-if="loading" />
-        <font-awesome-icon :icon="icon" size="2x" v-else />
-      </span>
-    </button>
+    <div class="camera-options-wrapper">
+      <div class="camera-option-control select">
+        <label for="iso">ISO</label>
+        <select name="iso" id="iso" @change="changeHandler" v-bind:value="iso">
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="320">320</option>
+          <option value="400">400</option>
+          <option value="500">500</option>
+          <option value="640">640</option>
+          <option value="800">800</option>
+          <option value="1600">1600</option>
+        </select>
+      </div>
+      <div class="camera-option-control">
+        <button class="camera-button" @click="snapHandler" :disabled="loading">
+          <span class="button-label">Take a snap</span>
+          <span class="button-icon">
+            <font-awesome-icon :icon="icon" />
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import { faCamera, faCog } from '@fortawesome/fontawesome-free-solid'
 
 export default {
   name: 'controls',
@@ -64,13 +65,13 @@ export default {
     meterMode: String,
     exposureMode: String,
   },
-  components: { FontAwesomeIcon },
   computed: {
     ...mapState({
       loading: state => state.loading
     }),
-    icon: () => faCamera,
-    loadingIcon: () => faCog,
+    icon: function () {
+      return this.loading ? 'cog' : 'camera'
+    }
   },
   methods: {
     ...mapActions(['changeCameraSettings', 'snap']),
@@ -90,33 +91,38 @@ export default {
 <style lang="postcss" scoped>
 
 .controls-wrapper {
-  align-content: center;
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-  max-width: 522px;
-  width: 100%;
-  margin: 0 auto;
+  max-width: 36rem;
+  margin: 1rem auto;
 }
 
 .camera-options-wrapper {
+  align-items: flex-end;
   display: flex;
-  flex: 1;
+}
+
+.camera-option-control {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  margin: 0 1rem;
 }
 
 .camera-button {
   align-items: center;
-  background: #ffb347;
+  background: #d0d6b3;
   border: 0;
-  border-bottom: 2px solid #e5a13f;
+  border-bottom: 2px solid #aaae7f;
   border-radius: 3px;
-  box-shadow: inset 0 -2px #e5a13f;
+  box-shadow: inset 0 -2px #aaae7f;
 
   cursor: pointer;
   display: flex;
   font-size: 1.2em;
-  margin: 10px 0;
+  margin: 0;
+  padding: 1rem;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  width: 100%;
 }
 
 .camera-button:active, .camera-button:hover {
@@ -125,18 +131,13 @@ export default {
   box-shadow: inset 0 -2px #eec282;
 }
 
-.camera-button:active .button-icon,
-.camera-button:hover .button-icon {
-  background-color: #eec282;
-}
-
 .camera-button:active .button-label,
 .camera-button:active .button-icon {
   color: #45250a;
 }
 
 .camera-button span {
-  padding: 10px 20px;
+  padding: 0;
 }
 
 .camera-button .button-label {
@@ -146,16 +147,7 @@ export default {
 }
 
 .camera-button .button-icon {
-  background-color: #e5a13f;
   text-align: right;
-}
-
-.camera-option-control {
-  align-items: flex-start;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding-right: 10px;
 }
 
 .camera-option-control:last-child {
@@ -163,22 +155,45 @@ export default {
 }
 
 .camera-option-control label {
-
   font-weight: bold;
-  margin: 5px 0;
+  margin: 1rem 0;
 }
 
-.camera-option-control select {
+.camera-option-control.select {
+  position: relative;
+}
+
+.camera-option-control.select select {
   -webkit-appearance: none;
-  background: #ffb347;
+  background: #d0d6b3;
   border: 0;
-  border-bottom: 2px solid #e5a13f;
+  border-bottom: 2px solid #aaae7f;
   border-radius: 3px;
-  box-shadow: inset 0 -2px #e5a13f;
+  box-shadow: inset 0 -2px #aaae7f;
 
   font-size: 1.2em;
-  padding: 10px;
+  padding: 1rem;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   width: 100%;
+}
+
+.camera-option-control.select:after {
+  color: #333;
+  content: '\f078';
+  font: normal normal normal 17px/1 FontAwesome;
+  position: absolute;
+  pointer-events: none;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.camera-option-control select:hover {
+  background: #ffd394;
+  border-bottom-color: #eec282;
+  box-shadow: inset 0 -2px #eec282;
+}
+
+select::-ms-expand {
+  display: none;
 }
 </style>

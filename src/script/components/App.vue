@@ -23,7 +23,6 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 680px;
   width: 100%;
   margin: 0 auto;
 }
